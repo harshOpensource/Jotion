@@ -29,7 +29,7 @@ function UserItem({}: Props) {
             <Avatar className="h-5 w-5">
               <AvatarImage src={user?.imageUrl} alt="userImage" />
             </Avatar>
-            <span className="text-start font-medium line-clamp-1">
+            <span className="text-start font-semibold line-clamp-1">
               {user?.firstName}&apos;s Jotion
             </span>
           </div>

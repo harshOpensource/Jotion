@@ -1,7 +1,15 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { ChevronsLeft, MenuIcon, PlusCircle } from "lucide-react";
+import {
+  ChevronsLeft,
+  MenuIcon,
+  Plus,
+  PlusCircle,
+  Search,
+  Settings,
+  Trash,
+} from "lucide-react";
 import { usePathname } from "next/navigation";
 import React, { ElementRef, useEffect, useRef, useState } from "react";
 import { useMediaQuery } from "usehooks-ts";
@@ -10,6 +18,13 @@ import { useMutation, useQuery } from "convex/react";
 import { api } from "../../../../convex/_generated/api";
 import Item from "./Item";
 import { toast } from "sonner";
+import DocumentList from "./DocumentList";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import TrashBox from "./TrashBox";
 
 type Props = {};
 
@@ -103,7 +118,6 @@ function Navigation({}: Props) {
     }
   };
 
-  const documents: any = useQuery(api.documents.get);
   const create = useMutation(api.documents.create);
 
   const onCreate = async () => {
@@ -139,12 +153,27 @@ function Navigation({}: Props) {
         <div>
           <div>
             <UserItem />
+            <Item onClick={() => {}} label="Search" icon={Search} isSearch />
+            <Item onClick={() => {}} label="Settings" icon={Settings} />
+
             <Item onClick={onCreate} label="New Page" icon={PlusCircle} />
           </div>
           <div className="mt-4">
-            {documents?.map((docu: any) => (
-              <div key={docu._id}>{docu.title}</div>
-            ))}
+            <DocumentList />
+            <Item onClick={onCreate} icon={Plus} label="New Page" />
+            <Popover>
+              <PopoverTrigger className="w-full mt-4">
+                <Item icon={Trash} label="Trash" />
+              </PopoverTrigger>
+              <PopoverContent
+                side={isMobile ? "bottom" : "right"}
+                className="p-8 w-72"
+              >
+                <div>
+                  <TrashBox />
+                </div>
+              </PopoverContent>
+            </Popover>
           </div>
           <div
             onMouseDown={handleMouseDown}
