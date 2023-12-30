@@ -1,11 +1,15 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { ChevronsLeft, MenuIcon } from "lucide-react";
+import { ChevronsLeft, MenuIcon, PlusCircle } from "lucide-react";
 import { usePathname } from "next/navigation";
 import React, { ElementRef, useEffect, useRef, useState } from "react";
 import { useMediaQuery } from "usehooks-ts";
 import UserItem from "./UserItem";
+import { useMutation, useQuery } from "convex/react";
+import { api } from "../../../../convex/_generated/api";
+import Item from "./Item";
+import { toast } from "sonner";
 
 type Props = {};
 
@@ -99,6 +103,19 @@ function Navigation({}: Props) {
     }
   };
 
+  const documents: any = useQuery(api.documents.get);
+  const create = useMutation(api.documents.create);
+
+  const onCreate = async () => {
+    const promise = create({
+      title: "Untitled",
+    });
+    toast.promise(promise, {
+      loading: "Creating a new note",
+      success: "New note created",
+      error: "Failed to create a note",
+    });
+  };
   return (
     <>
       <aside
@@ -122,8 +139,13 @@ function Navigation({}: Props) {
         <div>
           <div>
             <UserItem />
+            <Item onClick={onCreate} label="New Page" icon={PlusCircle} />
           </div>
-          <div className="mt-4">Doc</div>
+          <div className="mt-4">
+            {documents?.map((docu: any) => (
+              <div key={docu._id}>{docu.title}</div>
+            ))}
+          </div>
           <div
             onMouseDown={handleMouseDown}
             onClick={resettingWidth}
