@@ -44,7 +44,7 @@ function Navbar({}: Props) {
         {isAuthenticated && !isLoading && (
           <>
             <Button size={"sm"} asChild>
-              <Link href="/dashboard">Enter Jotion</Link>
+              <Link href="/documents">Enter Jotion</Link>
             </Button>
             <UserButton afterSignOutUrl="/" />
           </>
