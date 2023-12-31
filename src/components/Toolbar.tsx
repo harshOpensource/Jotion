@@ -8,6 +8,7 @@ import { ImageIcon, Smile, X } from "lucide-react";
 import { useMutation } from "convex/react";
 import { api } from "../../convex/_generated/api";
 import TextareaAutozize from "react-textarea-autosize";
+import { useCoverImageStore } from "@/hooks/user-cover-image";
 
 type Props = {
   initialData: Doc<"documents">;
@@ -63,6 +64,8 @@ function Toolbar({ initialData, preview }: Props) {
     });
   };
 
+  const coverImage = useCoverImageStore();
+
   return (
     <div className="pl-[54px] group relative">
       {!!initialData && !preview && (
@@ -103,6 +106,7 @@ function Toolbar({ initialData, preview }: Props) {
             className="text-muted-foreground text-xs"
             variant={"outline"}
             size={"sm"}
+            onClick={coverImage.onOpen}
           >
             <ImageIcon className="h-4 w-4 mr-2" />
             Add Cover Image
