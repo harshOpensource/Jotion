@@ -1,10 +1,11 @@
 
 ## This is a repository for Fullstack Notion Clone: Next.js 14, React, Convex, Tailwind
 
-
-![Untitled design](https://github.com/harshOpensource/Jotion/assets/135038577/159ed1da-a84a-4dce-811a-2e5f1902e8ad)
+![Screenshot 2024-01-01 031359](https://github.com/harshOpensource/Jotion/assets/135038577/7ef35c6c-61d2-429f-8dc5-330594eadd45)
 
 ![Screenshot 2023-12-31 181416](https://github.com/harshOpensource/Jotion/assets/135038577/d6bbc5ce-2288-467a-94a3-1e18a846c64d)
+
+![Screenshot 2024-01-01 030900](https://github.com/harshOpensource/Jotion/assets/135038577/cf4878b2-c6ca-40c5-b295-fb326f62b70e)
 
 
 Key Features:
