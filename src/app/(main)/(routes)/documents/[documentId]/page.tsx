@@ -1,12 +1,13 @@
 "use client";
 
-import React from "react";
+import React, { useMemo } from "react";
 import { Id } from "../../../../../../convex/_generated/dataModel";
 import { api } from "../../../../../../convex/_generated/api";
-import { useQuery } from "convex/react";
+import { useMutation, useQuery } from "convex/react";
 import Toolbar from "@/components/Toolbar";
 import { Cover } from "@/components/Cover";
 import { Skeleton } from "@/components/ui/skeleton";
+import dynamic from "next/dynamic";
 
 type Props = {
   params: {
@@ -18,6 +19,20 @@ function DocPage({ params }: Props) {
   const document = useQuery(api.documents.getById, {
     documentId: params.documentId as Id<"documents">,
   });
+
+  const Editor = useMemo(
+    () => dynamic(() => import("@/components/Editor"), { ssr: false }),
+    []
+  );
+
+  const update = useMutation(api.documents.update);
+
+  const onChange = (content: string) => {
+    update({
+      id: params.documentId,
+      content,
+    });
+  };
 
   if (document === undefined) {
     return (
@@ -44,6 +59,7 @@ function DocPage({ params }: Props) {
       <Cover url={document.coverImage} />
       <div className="md:max-w-3xl lg:max-w-4xl mx-auto">
         <Toolbar initialData={document} />
+        <Editor onChange={onChange} initialContent={document.content} />
       </div>
     </div>
   );
