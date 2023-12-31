@@ -2,7 +2,7 @@
 ## This is a repository for Fullstack Notion Clone: Next.js 14, React, Convex, Tailwind
 
 
-![Untitled design](https://github.com/harshOpensource/Jotion/assets/135038577/159ed1da-a84a-4dce-811a-2e5f1902e8ad){width=500px height=300px}
+![Untitled design](https://github.com/harshOpensource/Jotion/assets/135038577/159ed1da-a84a-4dce-811a-2e5f1902e8ad)
 
 ![Screenshot 2023-12-31 181416](https://github.com/harshOpensource/Jotion/assets/135038577/d6bbc5ce-2288-467a-94a3-1e18a846c64d)
 
