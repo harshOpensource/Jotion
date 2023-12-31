@@ -12,7 +12,7 @@ type Props = {
   };
 };
 
-function page({ params }: Props) {
+function DocPage({ params }: Props) {
   const document = useQuery(api.documents.getById, {
     documentId: params.documentId as Id<"documents">,
   });
@@ -34,4 +34,4 @@ function page({ params }: Props) {
   );
 }
 
-export default page;
+export default DocPage;

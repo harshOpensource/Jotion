@@ -70,6 +70,7 @@ function DocumentList({
             label={document.title}
             icon={FileIcon}
             id={document._id}
+            documentIcon={document.icon}
             active={params.documentId === document._id}
             level={level}
             onExpanded={() => onExpand(document._id)}
